@@ -1,4 +1,4 @@
-autocreate Plugin for DokuWiki
+Autocreate Plugin for DokuWiki
 ------------------------------
 
 Automatically create missing pages that you have linked to. Uses templates.
