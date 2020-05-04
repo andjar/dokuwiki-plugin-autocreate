@@ -18,8 +18,6 @@
  *      @author     Rik Blok <rik dot blok at ubc dot ca>
  *      @author     Christian Paul <christian at chrpaul dot de>
  */
- *
- */
  
 // must be run within Dokuwiki
 if(!defined('DOKU_INC')) die();
@@ -129,15 +127,15 @@ class action_plugin_autocreate extends DokuWiki_Action_Plugin {
             
             if($pageExists == FALSE){ 
                 
-                // Here we create the new pages
-                $templatefile = wikiFN($this->getConf('templatefile'), '', false);
-                if(@file_exists($templatefile)){
-                    $wikitext=io_readFile($templatefile);
-                }
-
                 $id = $link;
                 $ns = getNS($id);
                 $page = noNS($id);
+                
+                // Here we create the new pages
+                $templatefile = wikiFN( $ns . ':' . $this->getConf('templatefile'), '', false);
+                if(@file_exists($templatefile)){
+                    $wikitext=io_readFile($templatefile);
+                }
 
                 $silent=$this->getConf('silent');
                 $ns_sepchar = ":";
@@ -197,5 +195,3 @@ class action_plugin_autocreate extends DokuWiki_Action_Plugin {
     }
     
 }
-
-// vim:ts=4:sw=4:et:
